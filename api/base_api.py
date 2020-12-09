@@ -22,13 +22,13 @@ class BaseApi:
     @classmethod
     def load_yaml(cls,ymlname):
         path = os.path.join(DATA_PATH, ymlname)
-        with open(path) as f:
+        with open(path,encoding="utf-8") as f:
             return yaml.safe_load(f)
 
     #模板技术
     def template(self, ymlname, data, sub=None):
         path = os.path.join(DATA_PATH, ymlname)
-        with open(path) as f:
+        with open(path,encoding="utf-8") as f:
             if sub is None:
                 return yaml.safe_load(Template(f).substitute(data))
             else:
