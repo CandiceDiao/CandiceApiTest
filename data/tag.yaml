@@ -1,0 +1,12 @@
+add:
+   "method": "post"
+   "url": "https://qyapi.weixin.qq.com/cgi-bin/tag/create?access_token=${token}"
+   "params": "access_token=${token}"
+   "json":
+       "tagname": ${tagname}
+       "tagid": ${tagid}
+
+
+
+
+
