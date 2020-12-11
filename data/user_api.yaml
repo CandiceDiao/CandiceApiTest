@@ -16,7 +16,7 @@ delete:
 get:
   "method": "get"
   "url": "https://qyapi.weixin.qq.com/cgi-bin/user/get"
-  "params": "access_token={access_token}}&userid={userid}"
+  "params": "access_token=${token}&userid=${userid}"
 
 update:
    "method": "post"

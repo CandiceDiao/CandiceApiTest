@@ -35,12 +35,20 @@ class BaseApi:
 
     #模板技术
     def template(self, ymlname, data, sub=None):
+        """
+        使用模板技术，把yml文件中的变量进行二次转化，是本框架的yml文件的技术基础
+        :param path: 模板技术输入yml文件相对路径
+        :param data: data是需要修改的模板变量的字典类型
+        :param sub: sub是对yml的数据进行二次提取，等于是一个大字典，再提取下一层的小字典，为了让一个yml文件可以有多个接口数据
+        :return:
+        """
         path = os.path.join(DATA_PATH, ymlname)
         with open(path,encoding="utf-8") as f:
             if sub is None:
                 return yaml.safe_load(Template(f).substitute(data))
             else:
                 return yaml.safe_load(Template(yaml.dump(yaml.safe_load(f)[sub])).substitute(data))
+
 
 
 

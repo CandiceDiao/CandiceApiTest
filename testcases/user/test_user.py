@@ -37,18 +37,8 @@ class TestUser(User):
         #读取成员
         data_get= {"token":token,"userid":userid}
         assert name == self.user.get_user(data_get)['name']
-        #更新成员 待改进
-        data_update = {"userid": userid, "name": "更新"+name, "mobile": "+86 13899999999", "token": token}
-        assert "updated" == self.user.update_user(data_update)['errmsg']
+        # #更新成员 待改进
+        # data_update = {"userid": userid, "name": "更新"+name, "mobile": "+86 13899999999", "token": token}
+        # assert "updated" == self.user.update_user(data_update)['errmsg']
 
-
-
-
-
-
-
-
-    def test(self,token):
-        data_update = {"userid":'wu123456wu1',"name": "更新name", "mobile": "+86 13899999999","token":token}
-        assert "updated"== self.user.update_user(data_update)['errmsg']
 

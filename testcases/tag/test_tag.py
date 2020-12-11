@@ -1,7 +1,6 @@
 import pytest
 
 from api.tag import Tag
-from testcases.tag.conftest import token
 
 
 class TestTag(Tag):
