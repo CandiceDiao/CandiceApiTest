@@ -11,9 +11,14 @@ from utils.config import DATA_PATH
 
 class BaseApi:
 
+    s = requests.session()
+
+    def set_session(self,param:dict):
+        self.s.params.update(**param)
+
     #发送请求
     def send_api(self,data:dict):
-        res=requests.request(**data)
+        res=self.s.request(**data)
         return res
 
     #读取yaml文件,返回python数据类型

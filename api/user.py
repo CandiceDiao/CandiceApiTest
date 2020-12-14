@@ -6,6 +6,9 @@ from api.base_api import BaseApi
 
 class User(BaseApi):
 
+    def set_params(self,params):
+        self.set_session(params)
+
     def get_yamlname(self,yamlname):
         self.yamlname = yamlname
 
@@ -22,7 +25,8 @@ class User(BaseApi):
         return self.send_api(data).json()
 
     def update_user(self,update_data:dict):
-        data =self.template(self.yamlname, {"token":update_data['token']}, "update")
+        # data =self.template(self.yamlname, {"token":update_data['token']}, "update")
+        data = self.load_yaml(self.yamlname,"update")
         for key,value in update_data.items():
             data["json"][key] = value
         return self.send_api(data).json()
