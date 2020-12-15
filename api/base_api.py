@@ -6,14 +6,19 @@ from string import Template
 
 import requests
 import yaml
+from requests import Session
 
 from utils.config import DATA_PATH
 
 class BaseApi:
+    s = Session()
+
+    def set_session(self,param):
+        self.s.params.update(**param)
 
     #发送请求
     def send_api(self,data:dict):
-        res=requests.request(**data)
+        res = self.s.request(**data)
         return res
 
     #读取yaml文件,返回python数据类型

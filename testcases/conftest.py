@@ -36,11 +36,11 @@ def token(tmp_path_factory, worker_id):
     :param worker_id:进程id
     :return:token值
     """
-    if not worker_id:
+    if worker_id == "master":
         # not executing in with multiple workers, just produce the data and let
         # pytest's fixture caching do its job
         data_token = BaseApi.load_yaml('token.yaml')
-        yield Token().get_token(data_token)
+        return Token().get_token(data_token)
 
     # get the temp directory shared by all workers
     # tmp_path_factory:是一个session范围的fixture,可用于从任何其他测试用例及fixture中创建任意临时目录。
@@ -58,5 +58,5 @@ def token(tmp_path_factory, worker_id):
             data = Token().get_token(data_token)
             # 第一次执行将token值写入文件data.josn.lock
             fn.write_text(json.dumps(data))
-    yield data
+    return data
 
