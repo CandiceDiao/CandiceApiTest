@@ -1,6 +1,6 @@
 add:
    "method": "post"
-   "url": "${url}cgi-bin/user/create"
+   "url": "https://qyapi.weixin.qq.com/cgi-bin/user/create"
    "json":
        "userid": ${userid}
        "name": ${name}
@@ -9,19 +9,19 @@ add:
 
 delete:
   "method": "get"
-  "url": "${url}cgi-bin/user/delete"
+  "url": "https://qyapi.weixin.qq.com/cgi-bin/user/delete"
   "params":
        "userid": ${userid}
 
 get:
   "method": "get"
-  "url": "${url}cgi-bin/user/get"
+  "url": "https://qyapi.weixin.qq.com/cgi-bin/user/get"
   "params":
-       "userid": ${userid}
+      "userid": ${userid}
 
 update:
    "method": "post"
-   "url": "${url}cgi-bin/user/update"
+   "url": "https://qyapi.weixin.qq.com/cgi-bin/user/update"
    "json":
        "userid":
        "name":
