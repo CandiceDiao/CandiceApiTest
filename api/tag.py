@@ -2,15 +2,16 @@
 标签管理
 """
 from api.base_api import BaseApi
+from utils.file_reader import YamlReader
 
 API_YAML='tag_api.yaml'
+from utils.config import DATA_PATH
 
 class Tag(BaseApi):
 
 
-    def add_tag(self,token,tagid,tagname):
-        data={"token":token,"tagid":tagid,"tagname":tagname}
-        data = self.template(API_YAML, data, "add")
+    def add_tag(self,data):
+        data = YamlReader(API_YAML).template(data, "add")
         return self.send_api(data).json()
 
 

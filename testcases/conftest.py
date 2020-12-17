@@ -1,11 +1,14 @@
 import json
 from typing import List
 import pytest
-from pip._vendor.lockfile import FileLock
+#from pip._vendor.lockfile import FileLock
+from filelock import FileLock
 
 from api.base_api import BaseApi
 from api.wework import Token
+from utils.file_reader import YamlReader
 
+TOKENFILE='token.yaml'
 
 def pytest_collection_modifyitems(
         session:"Session",config:"Config",items:List["Item"]
@@ -39,7 +42,7 @@ def token(tmp_path_factory, worker_id):
     if worker_id == "master":
         # not executing in with multiple workers, just produce the data and let
         # pytest's fixture caching do its job
-        data_token = BaseApi.load_yaml('token.yaml')
+        data_token = YamlReader(TOKENFILE).load_yaml()
         return Token().get_token(data_token)
 
     # get the temp directory shared by all workers
@@ -54,7 +57,7 @@ def token(tmp_path_factory, worker_id):
             # 之后的进程进行读文件操作，拿到token值
             data = json.loads(fn.read_text())
         else:
-            data_token = BaseApi.load_yaml('token.yaml')
+            data_token = YamlReader(TOKENFILE).load_yaml()
             data = Token().get_token(data_token)
             # 第一次执行将token值写入文件data.josn.lock
             fn.write_text(json.dumps(data))

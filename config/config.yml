@@ -1,0 +1,54 @@
+# 配置文件
+# -*- coding: UTF-8 -*-
+
+#
+#log:
+#    file_name: test.log      # 输出日志文件名
+#    backup: 5                # 备份名
+#    console_level: WARNING  # 控制台输出等级
+#    file_level: DEBUG       # 文件输出等级
+#    pattern: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'  # 打印输出格式
+
+
+#接口请求头部公共参数
+#header:
+#  {"Content-Type": "application/json;charset=UTF-8"}
+
+#文件上传请求头部
+#header_upload:
+#    {"Conteny-Type": "multipart/form-data"}
+
+
+#mock地址
+#url: http://10.10.203.21:8088/app/mock/19/post/
+
+
+ # 测试环境接口配置
+url: http://10.10.203.26:9090/
+
+header:
+  {"Content-Type": "application/json;charset=UTF-8","Referer":"http://10.10.203.26:9090/service/ma/login"}
+
+header_upload:
+    {"Conteny-Type": "multipart/form-data","Referer":"http://10.10.203.26:9090/service/ma/login"}
+
+
+# oracle数据库地址
+oraclehost: 10.10.203.22
+
+oracleport: 1521
+
+oraclesid: orcl11g
+
+oracleuser: DRG_YIBAO2019
+
+oraclepassword: oracle
+
+# mysql数据库地址
+mysqlhost: 10.0.62.43
+
+mysqluser: root
+
+mysqlpw: root
+
+mysqldb: mdm_std_output
